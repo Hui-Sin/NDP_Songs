@@ -6,53 +6,60 @@
 
 
     <TextView
-        android:id="@+id/tvSongTitle"
+        android:id="@+id/tvModiSongID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Song ID" />
+
+    <TextView
+        android:id="@+id/tvModiID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvModiSongTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Song Title" />
 
     <EditText
-        android:id="@+id/etSongTitle"
+        android:id="@+id/etModiSongTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Enter song title here"
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/tvSingers"
+        android:id="@+id/tvModiSinger"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Singers" />
+        android:text="Singer" />
 
     <EditText
-        android:id="@+id/etSingers"
+        android:id="@+id/etModiSinger"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Enter singers' name here"
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/tvYear"
+        android:id="@+id/tvModiYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Year" />
 
     <EditText
-        android:id="@+id/etYear"
+        android:id="@+id/etModiYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Enter year of song here"
-        android:inputType="number" />
+        android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/tvStars"
+        android:id="@+id/tvModiStars"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Stars" />
-
+        android:text="TextView" />
     <RadioGroup
         android:id="@+id/rdgrpStarsModi"
         android:layout_width="match_parent"
@@ -97,21 +104,28 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnInsert"
+            android:id="@+id/btnUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="insert" />
+            android:text="update" />
 
         <Button
-            android:id="@+id/btnShowList"
+            android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="show list" />
+            android:text="delete" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="cancel" />
+
 </LinearLayout>
