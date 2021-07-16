@@ -44,30 +44,30 @@ public class ModifyActivity extends AppCompatActivity {
         songTitleModi.setText(data.getSongTitle());
         singersModi.setText(data.getSingers());
         yearModi.setText(data.getYear());
-        rdgrpstarsModi.setOnCheckedChangeListener();
+        rdgrpstarsModi.check(Integer.parseInt(data.getStars()));
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DBHelper dbh = new DBHelper(EditActivity.this);
-                data.setNoteContent(etEditContent.getText().toString());
-                dbh.updateNote(data);
+                DBHelper dbh = new DBHelper(ModifyActivity.this);
+                data.setSongContent(songTitleModi.toString(),singersModi.toString(),Integer.parseInt(yearModi.toString()),rdgrpstarsModi.toString());
+                dbh.updateSong(data);
                 dbh.close();
-                Intent back = new Intent(EditActivity.this,
-                        MainActivity.class);
+                Intent back = new Intent(ModifyActivity.this,
+                        ShowActivity.class);
                 startActivity(back);
-                Toast.makeText(EditActivity.this, "Update successful",
+                Toast.makeText(ModifyActivity.this, "Update successful",
                         Toast.LENGTH_SHORT).show();
             }
         });
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DBHelper dbh = new DBHelper(EditActivity.this);
-                dbh.deleteNote(data.getId());
-                Intent back = new Intent(EditActivity.this,
-                        MainActivity.class);
+                DBHelper dbh = new DBHelper(ModifyActivity.this);
+                dbh.deleteSong(data.getId());
+                Intent back = new Intent(ModifyActivity.this,
+                        ShowActivity.class);
                 startActivity(back);
-                Toast.makeText(EditActivity.this, "Delete successful",
+                Toast.makeText(ModifyActivity.this, "Delete successful",
                         Toast.LENGTH_SHORT).show();
             }
         });
