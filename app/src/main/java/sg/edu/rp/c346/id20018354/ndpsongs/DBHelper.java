@@ -98,8 +98,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns= {COLUMN_ID, COLUMN_SONG_TITLE,COLUMN_SINGERS,COLUMN_YEAR,COLUMN_STARS};
-        String condition = COLUMN_SONG_TITLE + " Like ?"+COLUMN_SINGERS+ " Like ?"+COLUMN_YEAR+ " Like ?"
-                +COLUMN_STARS+ " Like ?";
+        String condition = COLUMN_YEAR+ " Like ?";
         String[] args = { "%" +  keyword + "%"};
         Cursor cursor = db.query(TABLE_SONG, columns, condition, args,
                 null, null, null, null);

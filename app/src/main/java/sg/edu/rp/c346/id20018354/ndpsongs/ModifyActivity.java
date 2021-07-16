@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static java.lang.String.valueOf;
+
 public class ModifyActivity extends AppCompatActivity {
 
     Button btnUpdate,btnDelete,btnCancel;
@@ -21,9 +23,6 @@ public class ModifyActivity extends AppCompatActivity {
     EditText songTitleModi,singersModi,yearModi;
     RadioGroup rdgrpstarsModi;
     Song data;
-
-    ArrayList<Song> al;
-    ArrayAdapter<Song> aa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +36,12 @@ public class ModifyActivity extends AppCompatActivity {
         btnUpdate=findViewById(R.id.btnUpdate);
         btnDelete=findViewById(R.id.btnDelete);
         btnCancel=findViewById(R.id.btnCancel);
-        Intent modi = getIntent();
-        data = (Song) modi.getSerializableExtra("data");
 
-        ModiID.setText("ID: " + data.getId());
+        Intent modi = getIntent();
+        data = (Song) modi.getSerializableExtra("songdata");
+
+
+        ModiID.setText(data.getId());
         songTitleModi.setText(data.getSongTitle());
         singersModi.setText(data.getSingers());
         yearModi.setText(data.getYear());
@@ -49,7 +50,7 @@ public class ModifyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DBHelper dbh = new DBHelper(ModifyActivity.this);
-                data.setSongContent(songTitleModi.toString(),singersModi.toString(),Integer.parseInt(yearModi.toString()),rdgrpstarsModi.toString());
+                data.setSongContent(valueOf(songTitleModi),valueOf(singersModi),Integer.parseInt(valueOf(yearModi)),valueOf(rdgrpstarsModi));
                 dbh.updateSong(data);
                 dbh.close();
                 Intent back = new Intent(ModifyActivity.this,
@@ -68,6 +69,17 @@ public class ModifyActivity extends AppCompatActivity {
                         ShowActivity.class);
                 startActivity(back);
                 Toast.makeText(ModifyActivity.this, "Delete successful",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent back = new Intent(ModifyActivity.this,
+                        ShowActivity.class);
+                startActivity(back);
+                Toast.makeText(ModifyActivity.this, "Cancelled Modify",
                         Toast.LENGTH_SHORT).show();
             }
         });

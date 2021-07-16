@@ -14,7 +14,8 @@
     <Spinner
         android:id="@+id/spnYear"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:entries="@array/spnYear" />
 
     <ListView
         android:id="@+id/lv"

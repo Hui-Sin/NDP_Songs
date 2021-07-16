@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">NDP Songs</string>
     <string-array name="spnYear">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>2002</item>
+        <item>2008</item>
+        <item>2012</item>
+        <item>2201</item>
     </string-array>
 </resources>

@@ -11,15 +11,19 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import java.sql.Array;
 import java.util.ArrayList;
+
+import static java.lang.String.valueOf;
 
 public class ShowActivity extends AppCompatActivity {
 
     Button btnzGet5StarSong;
-    Spinner spnYear;
+    Spinner spnyear;
     ArrayList<Song> al;
     ListView lv;
     ArrayAdapter<Song> aa;
+    Song data;
 
 
     @Override
@@ -28,19 +32,24 @@ public class ShowActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show);
         btnzGet5StarSong=findViewById(R.id.btnShow5Stars);
         lv=findViewById(R.id.lv);
-        spnYear=findViewById(R.id.spnYear);
+        spnyear=findViewById(R.id.spnYear);
+
         al = new ArrayList<Song>();
         aa = new ArrayAdapter<Song>(this,
                 android.R.layout.simple_list_item_1, al);
         lv.setAdapter(aa);
+
+        DBHelper dbh = new DBHelper(ShowActivity.this);
+        al.addAll(dbh.getAllSongs());
+        aa.notifyDataSetChanged();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int
                     position, long identity) {
-                Song data = al.get(position);
+                Song datas = al.get(position);
                 Intent modi = new Intent(ShowActivity.this,
                         ModifyActivity.class);
-                modi.putExtra("data", data);
+                modi.putExtra("songdata", data);
                 startActivity(modi);
             }
         });
@@ -51,6 +60,24 @@ public class ShowActivity extends AppCompatActivity {
                 al.clear();
                 al.addAll(dbh.getAllSongs());
                 aa.notifyDataSetChanged();
+            }
+        });
+        spnyear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String filterText = valueOf(spnyear).trim();
+                if(filterText == valueOf(R.id.etYear)) {
+                    al=dbh.getAllSongs(filterText);
+                }
+                else{
+                    al=dbh.getAllSongs();
+                }
+                aa.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }
