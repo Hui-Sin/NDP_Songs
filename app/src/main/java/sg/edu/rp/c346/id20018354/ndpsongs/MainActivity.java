@@ -73,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
         btnShowList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent edit = new Intent(MainActivity.this,
+                Intent show = new Intent(MainActivity.this,
                         ShowActivity.class);
-                startActivity(edit);
+                startActivity(show);
             }
         });
     }

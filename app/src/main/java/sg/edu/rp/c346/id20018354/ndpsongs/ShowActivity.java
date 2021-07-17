@@ -23,7 +23,7 @@ public class ShowActivity extends AppCompatActivity {
     ArrayList<Song> al;
     ListView lv;
     ArrayAdapter<Song> aa;
-    Song data;
+//    Song data;
 
 
     @Override
@@ -46,7 +46,7 @@ public class ShowActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int
                     position, long identity) {
-                Song datas = al.get(position);
+                Song data = al.get(position);
                 Intent modi = new Intent(ShowActivity.this,
                         ModifyActivity.class);
                 modi.putExtra("songdata", data);
@@ -67,11 +67,13 @@ public class ShowActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String filterText = valueOf(spnyear).trim();
                 if(filterText == valueOf(R.id.etYear)) {
-                    al=dbh.getAllSongs(filterText);
+                    DBHelper dbh = new DBHelper(ShowActivity.this);
+                    al = dbh.getAllSongs(filterText);
                 }
                 else{
+                    DBHelper dbh = new DBHelper(ShowActivity.this);
                     al=dbh.getAllSongs();
-                }
+                    }
                 aa.notifyDataSetChanged();
             }
 
