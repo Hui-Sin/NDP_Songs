@@ -11,61 +11,71 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/id"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFFFFF" />
 
     <EditText
         android:id="@+id/etID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:enabled="false" />
+        android:enabled="false"
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:id="@+id/etTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_title" />
+        android:hint="@string/hint_title"
+        android:textColor="#FFFFFF"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/singers"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:id="@+id/etSingers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_singers" />
+        android:hint="@string/hint_singers"
+        android:textColor="#FFFFFF"/>
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/year"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:id="@+id/etYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_year" />
+        android:hint="@string/hint_year"
+        android:textColor="#FFFFFF"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/stars"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFFFFF"/>
 
     <RadioGroup
         android:id="@+id/rgStars"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:textColor="#FFFFFF">
 
         <RadioButton
             android:id="@+id/radio1"
@@ -78,25 +88,29 @@
             android:id="@+id/radio2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_2" />
+            android:text="@string/_2"
+            android:textColor="#FFFFFF"/>
 
         <RadioButton
             android:id="@+id/radio3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_3" />
+            android:text="@string/_3"
+            android:textColor="#FFFFFF"/>
 
         <RadioButton
             android:id="@+id/radio4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_4" />
+            android:text="@string/_4"
+            android:textColor="#FFFFFF"/>
 
         <RadioButton
             android:id="@+id/radio5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/_5" />
+            android:text="@string/_5"
+            android:textColor="#FFFFFF" />
 
     </RadioGroup>
 
