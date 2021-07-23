@@ -2,37 +2,77 @@ package sg.edu.rp.c346.id20018354.ndpsongs;
 
 import java.io.Serializable;
 
-public class Song implements Serializable {
-    private int id;
-    private String songTitle;
-    private String singers;
-    private int year;
-    private String stars;
+import androidx.annotation.NonNull;
 
-    public Song( int id, String songTitle,String singers, int year, String stars ) {
+public class Song implements Serializable {
+
+    private int id;
+    private String title;
+    private String singers;
+    private int yearReleased;
+    private int stars;
+
+    public Song(int id, String title, String singers, int yearReleased, int stars) {
         this.id = id;
-        this.songTitle = songTitle;
+        this.title = title;
         this.singers = singers;
-        this.year = year;
+        this.yearReleased = yearReleased;
         this.stars = stars;
     }
 
-    public int getId() {  return id;  }
-
-    public String getSongTitle() { return songTitle; }
-    public String getSingers() { return singers; }
-    public int getYear() {  return year;  }
-    public String getStars() {  return stars;  }
-
-    public void setSongContent(String songTitle,String singers, int year, String stars) {
-        this.songTitle = songTitle;
-        this.singers = singers;
-        this.year = year;
-        this.stars = stars;;
+    public int getId() {
+        return id;
     }
 
-    @Override
-    public String toString() { return songTitle +"\n"+ singers
-                                +"\n"+year+"\n"+stars;  }
+    public Song setId(int id) {
+        this.id = id;
+        return this;
+    }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public Song setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public String getSingers() {
+        return singers;
+    }
+
+    public Song setSingers(String singers) {
+        this.singers = singers;
+        return this;
+    }
+
+    public int getYearReleased() {
+        return yearReleased;
+    }
+
+    public Song setYearReleased(int yearReleased) {
+        this.yearReleased = yearReleased;
+        return this;
+    }
+
+    public int getStars() {
+        return stars;
+    }
+
+    public Song setStars(int stars) {
+        this.stars = stars;
+        return this;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        String starsString = "";
+        for(int i = 0; i < stars; i++){
+            starsString += "*";
+        }
+        return title + "\n" + singers + " - " + yearReleased + "\n" + starsString;
+
+    }
 }

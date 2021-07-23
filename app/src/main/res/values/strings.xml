@@ -1,9 +1,27 @@
 <resources>
-    <string name="app_name">NDP Songs</string>
-    <string-array name="spnYear">
-        <item>2002</item>
-        <item>2008</item>
-        <item>2012</item>
-        <item>2201</item>
-    </string-array>
+    <string name="app_name">P05-NDPSongs(Enhanced)</string>
+    <string name="title">Song Title</string>
+    <string name="hint_title">Enter song title here</string>
+    <string name="singers">Singers</string>
+    <string name="hint_singers">Enter singers\' name here</string>
+    <string name="year">Year</string>
+    <string name="hint_year">Enter year of release here</string>
+    <string name="stars">Stars</string>
+    <string name="_5">5</string>
+    <string name="_4">4</string>
+    <string name="_3">3</string>
+    <string name="_2">2</string>
+    <string name="_1">1</string>
+
+    <string name="title_activity_main">Insert Song</string>
+    <string name="title_activity_show">Show Song</string>
+    <string name="title_activity_modify">Modify Song</string>
+
+    <string name="id">Song ID</string>
+    <string name="btnShowList">Show List</string>
+    <string name="btnInsert">Insert</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="btn5Stars">Show all songs with 5 stars</string>
 </resources>

@@ -15,68 +15,90 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnInsert,btnShowList;
-    EditText songTitle,singers,year;
-    RadioGroup rdgrpstars;
-
-    ArrayList<Song> al;
-    ArrayAdapter<Song> aa;
+    EditText etTitle, etSingers, etYear;
+    Button btnInsert, btnShowList;
+    RadioGroup rg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        songTitle=findViewById(R.id.etSongTitle);
-        singers=findViewById(R.id.etSingers);
-        year=findViewById(R.id.etYear);
-        btnInsert=findViewById(R.id.btnInsert);
-        btnShowList=findViewById(R.id.btnShowList);
-        rdgrpstars=findViewById(R.id.rdgrpStarsModi);
-        al = new ArrayList<Song>();
-        aa = new ArrayAdapter<Song>(this,
-                android.R.layout.simple_list_item_1, al);
+
+        setTitle(getTitle().toString() + " ~ " + getResources().getText(R.string.title_activity_main));
+
+        etTitle = (EditText) findViewById(R.id.etTitle);
+        etSingers = (EditText) findViewById(R.id.etSingers);
+        etYear = (EditText) findViewById(R.id.etYear);
+        btnInsert = (Button) findViewById(R.id.btnInsertSong);
+        btnShowList = (Button) findViewById(R.id.btnShowList);
+        rg = (RadioGroup) findViewById(R.id.rgStars);
 
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String sstar="";
-                String songTitles = songTitle.getText().toString();
-                String singer = singers.getText().toString();
-                String syear= year.getText().toString();
-                int checkedRadioId = rdgrpstars.getCheckedRadioButtonId();
-                if(checkedRadioId == R.id.rdbtn1star){
-                    sstar= "*";
+            public void onClick(View view) {
+
+                String title = etTitle.getText().toString().trim();
+                String singers = etSingers.getText().toString().trim();
+                if (title.length() == 0 || singers.length() == 0){
+                    Toast.makeText(MainActivity.this, "Incomplete data", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                else if(checkedRadioId == R.id.rdbtn2star){
-                    sstar= "**";
+
+
+                String year_str = etYear.getText().toString().trim();
+                int year = 0;
+                try {
+                    year = Integer.valueOf(year_str);
+                } catch (Exception e){
+                    Toast.makeText(MainActivity.this, "Invalid year", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                else if(checkedRadioId == R.id.rdbtn3star){
-                    sstar= "***";
-                }
-                else if(checkedRadioId == R.id.rdbtn4star){
-                    sstar= "****";
-                }
-                else{
-                    sstar= "*****";
-                }
+
                 DBHelper dbh = new DBHelper(MainActivity.this);
-                long inserted_id = dbh.insertSongs(songTitles,singer,Integer.parseInt(syear),sstar);
-                if (inserted_id != -1){
-                    al.clear();
-                    al.addAll(dbh.getAllSongs());
-                    aa.notifyDataSetChanged();
-                    Toast.makeText(MainActivity.this, "Insert successful",
-                            Toast.LENGTH_SHORT).show();
-                }
+
+                int stars = getStars();
+                dbh.insertSong(title, singers, year, stars);
+                dbh.close();
+                Toast.makeText(MainActivity.this, "Inserted", Toast.LENGTH_LONG).show();
+
+                etTitle.setText("");
+                etSingers.setText("");
+                etYear.setText("");
+
             }
         });
+
         btnShowList.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent show = new Intent(MainActivity.this,
-                        ShowActivity.class);
-                startActivity(show);
+            public void onClick(View arg0) {
+                Intent i = new Intent(MainActivity.this, ShowActivity.class);
+                startActivity(i);
             }
         });
+
     }
+
+
+    private int getStars() {
+        int stars = 1;
+        switch (rg.getCheckedRadioButtonId()) {
+            case R.id.radio1:
+                stars = 1;
+                break;
+            case R.id.radio2:
+                stars = 2;
+                break;
+            case R.id.radio3:
+                stars = 3;
+                break;
+            case R.id.radio4:
+                stars = 4;
+                break;
+            case R.id.radio5:
+                stars = 5;
+                break;
+        }
+        return stars;
+    }
+
 }

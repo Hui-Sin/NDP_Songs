@@ -1,24 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    tools:context=".ShowActivity" >
 
     <Button
         android:id="@+id/btnShow5Stars"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="show all songs with 5 stars" />
+        android:text="@string/btn5Stars"  />
 
     <Spinner
         android:id="@+id/spnYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/spnYear" />
+        android:layout_gravity="center_horizontal"
+        android:visibility="visible" />
 
     <ListView
         android:id="@+id/lv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" >
+    </ListView>
+
 </LinearLayout>
