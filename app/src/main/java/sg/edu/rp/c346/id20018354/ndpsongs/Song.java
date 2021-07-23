@@ -64,13 +64,25 @@ public class Song implements Serializable {
         this.stars = stars;
         return this;
     }
+    public String getStarsString() {
+        String starsString = "";
+        for(int i = 0; i < stars; i++){
+            starsString += "*";
+        }
+        return starsString;
+    }
+    public String getYearString() {
+        String yearReleasedString="";
+        yearReleasedString= String.valueOf(getYearReleased());
+        return yearReleasedString;
+    }
 
     @NonNull
     @Override
     public String toString() {
         String starsString = "";
         for(int i = 0; i < stars; i++){
-            starsString += "*";
+            starsString += " * ";
         }
         return title + "\n" + singers + " - " + yearReleased + "\n" + starsString;
 

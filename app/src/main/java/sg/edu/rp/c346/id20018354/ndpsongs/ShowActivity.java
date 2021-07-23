@@ -17,13 +17,13 @@ public class ShowActivity extends AppCompatActivity {
 
     ListView lv;
     ArrayList<Song> songList;
-    ArrayAdapter<Song> adapter;
-    String moduleCode;
+//    ArrayAdapter<Song> adapter;
     Button btn5Stars;
 
     ArrayList<String> years;
     Spinner spinner;
     ArrayAdapter<String> spinnerAdapter;
+    CustomAdapter caadapter;
 
     @Override
     protected void onResume() {
@@ -31,7 +31,8 @@ public class ShowActivity extends AppCompatActivity {
         DBHelper dbh = new DBHelper(this);
         songList.clear();
         songList.addAll(dbh.getAllSongs());
-        adapter.notifyDataSetChanged();
+//        adapter.notifyDataSetChanged();
+        caadapter.notifyDataSetChanged();
 
         years.clear();
         years.addAll(dbh.getYears());
@@ -54,15 +55,18 @@ public class ShowActivity extends AppCompatActivity {
         years = dbh.getYears();
         dbh.close();
 
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, songList);
-        lv.setAdapter(adapter);
+//        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, songList);
+//        lv.setAdapter(adapter);
+        caadapter = new CustomAdapter(this, R.layout.row, songList);
+        lv.setAdapter(caadapter);
+
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(ShowActivity.this, ModifyActivity.class);
-                i.putExtra("song", songList.get(position));
-                startActivity(i);
+                Intent modi = new Intent(ShowActivity.this, ModifyActivity.class);
+                modi.putExtra("song", songList.get(position));
+                startActivity(modi);
             }
         });
 
@@ -72,7 +76,8 @@ public class ShowActivity extends AppCompatActivity {
                 DBHelper dbh = new DBHelper(ShowActivity.this);
                 songList.clear();
                 songList.addAll(dbh.getAllSongsByStars(5));
-                adapter.notifyDataSetChanged();
+//                adapter.notifyDataSetChanged();
+                caadapter.notifyDataSetChanged();
             }
         });
 
@@ -85,7 +90,8 @@ public class ShowActivity extends AppCompatActivity {
                 DBHelper dbh = new DBHelper(ShowActivity.this);
                 songList.clear();
                 songList.addAll(dbh.getAllSongsByYear(Integer.valueOf(years.get(position))));
-                adapter.notifyDataSetChanged();
+//                adapter.notifyDataSetChanged();
+                caadapter.notifyDataSetChanged();
             }
 
             @Override
